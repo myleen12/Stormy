@@ -1,20 +1,13 @@
 var APIkey = "91739a09f6b5cd87988f3fbe99ab2d30";
-var livecity = "";
-var lon;
-var lat;
-var urlGeo =
-  "http://api.openweathermap.org/geo/1.0/direct?lat=${lat}&lon=${lon}&appid=${APIkey}&units=${metric}&lang=${lang}";
-var search = document.getElementById("#search");
-var searchBtn = document.getElementById(".btn");
-var urlforcast =
-  "https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid={APIkey}&units=metric`;";
+var search = document.getElementById("search");
+var searchBtn = document.getElementById("wee-btn");
 var byeCity = document.getElementById("city");
 
 searchBtn.addEventListener("click", All);
 
 function All() {
   var urlGeo =
-    "http://api.openweathermap.org/geo/1.0/direct?lat=${lat}&lon=${lon}&appid=${APIkey}&units=${metric}&lang=${lang}";
+    "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}";
 
   fetch(urlGeo)
     .then(function (response) {
@@ -24,8 +17,7 @@ function All() {
       console.log(data);
       var lat = data[0].lat;
       var lon = data[0].lon;
-      var urlforcast =
-        "https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid={APIkey}&units=metric";
+      var urlforcast = "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
 
       fetch(urlforcast)
         .then(function (response) {
@@ -66,5 +58,5 @@ var weekend = [
   monent().add(6, "d").format("dddd"),
 ];
 for (i = 0; i < 6; i++) {
-  document.getElementById('date' + i + "").textContent = weekend[i];
+  document.getElementById('date-' + i + "").textContent = weekend[i];
 }
