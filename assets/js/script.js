@@ -7,17 +7,16 @@ searchBtn.addEventListener("click", All);
 
 function All() {
   var urlGeo =
-    "http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}";
-
+    'http://api.openweathermap.org/geo/1.0/direct?q=' + search.value + '&limit=1&appid=' + APIkey + '';
   fetch(urlGeo)
     .then(function (response) {
       return response.json();
     })
     .then(function (data) {
       console.log(data);
-      var lat = data[0].lat;
-      var lon = data[0].lon;
-      var urlforcast = "https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}";
+       var lat = data[0].lat;
+       var lon = data[0].lon;
+       var urlforcast = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon='+ lon + '&appid=' + APIkey + '&units=metric';
 
       fetch(urlforcast)
         .then(function (response) {
