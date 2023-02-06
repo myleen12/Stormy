@@ -66,5 +66,5 @@ var weekend = [
   monent().add(6, "d").format("dddd"),
 ];
 for (i = 0; i < 6; i++) {
-  document.getElementById("day" + i + "").textContent = weekend[i];
+  document.getElementById('date' + i + "").textContent = weekend[i];
 }
