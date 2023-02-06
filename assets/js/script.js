@@ -5,25 +5,28 @@ var lat;
 var urlGeo = 'http://api.openweathermap.org/geo/1.0/direct?lat=${lat}&lon=${lon}&appid=${APIkey}&units=${metric}&lang=${lang}';
 var search = document.getElementById('#search');
 var searchBtn = document.getElementById('.btn')
-var urlforcast = 'https://api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIkey}&units=metric`;'
+var urlforcast = 'https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid={APIkey}&units=metric`;'
+
+
+searchBtn.addEventListener('click', All);
 
 
 
 
 
-function geo() {
-    urlGeo = 'http://api.openweathermap.org/geo/1.0/direct?lat=${lat}&lon=${lon}&appid=${APIkey}&units=${metric}&lang=${lang}';
-    console.log('hello')
-fetch(urlGeo)
-      .then
 
 
-}
-
-
-window.addEventListener('load',()=>{
-
-}
+function All() {
+    var urlGeo = 'http://api.openweathermap.org/geo/1.0/direct?lat=${lat}&lon=${lon}&appid=${APIkey}&units=${metric}&lang=${lang}';
+    
+    fetch(urlGeo)
+         .then(function (response) {
+            return response.json();
+        })
+         .then(function (data) {
+         console.log(data);
+        });
+    };
 
 
 
