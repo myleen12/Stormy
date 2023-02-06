@@ -2,7 +2,7 @@ var APIkey = "91739a09f6b5cd87988f3fbe99ab2d30";
 var search = document.getElementById("search");
 var searchBtn = document.getElementById("wee-btn");
 var byeCity = document.getElementById("city");
-
+var weekday
 searchBtn.addEventListener("click", All);
 
 function All() {
@@ -47,7 +47,7 @@ function All() {
     });
 }
 
-var weekend = [
+var weekday = [
   monent().format("dddd"),
   monent().add(1, "d").format("dddd"),
   monent().add(2, "d").format("dddd"),
@@ -57,5 +57,5 @@ var weekend = [
   monent().add(6, "d").format("dddd"),
 ];
 for (i = 0; i < 6; i++) {
-  document.getElementById('date-' + i + "").textContent = weekend[i];
+  document.getElementById('date-' + i + "").textContent = weekday[i];
 }
