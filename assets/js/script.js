@@ -61,3 +61,23 @@ var weekday = [
 for (i = 0; i < 6; i++) {
   document.getElementById('date-' + i + "").textContent = weekday[i];
 }
+
+
+window.addEventListener('load', () => {
+  var lat;
+  var lon;
+
+  if(navigator.geolocation){
+
+  navigator.geolocation.getCurrentPosition(
+    (position)=> {
+    lon = position.coords.longitude;
+    lat = position.coords.latitude;
+    urlforcast = 'https://api.openweathermap.org/data/2.5/forecast?lat=' + lat + '&lon='+ lon + '&appid=' + APIkey + '&units=imperial';
+    })
+  
+    fetch(urlforcast)
+    .then(function(response){
+      return response.json()
+    })
+  }});
