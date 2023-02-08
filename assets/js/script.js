@@ -2,13 +2,14 @@ var APIkey = "91739a09f6b5cd87988f3fbe99ab2d30";
 var search = document.getElementById("search");
 var searchBtn = document.getElementById("wee-btn");
 var byeCity = document.getElementById("city");
-var weekday
+var weekday 
+var searchHistory = [];
 searchBtn.addEventListener("click", display);
 
 function display() {
     console.log(search.value);
   var urlGeo =
-    'http://api.openweathermap.org/geo/1.0/direct?q=' + search.value + '&limit=1&appid=91739a09f6b5cd87988f3fbe99ab2d30'
+    'https://api.openweathermap.org/geo/1.0/direct?q=' + search.value + '&limit=1&appid=91739a09f6b5cd87988f3fbe99ab2d30'
 
   fetch(urlGeo)
     .then(function (response) {
@@ -41,12 +42,15 @@ function display() {
           }
           for (var i = 0; i < 6; i++) {
             document.getElementById("icon-" + i + "").src =
-              "http://openweathermap.org/img/wn/" +
+              "https://openweathermap.org/img/wn/" +
               data.list[i].weather[0].icon +
               ".png";
           }
-        });
-    });
+        })
+    })
+    search.push(search.value);
+
+    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
 }
 
 var weekday = [
