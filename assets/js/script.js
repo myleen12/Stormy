@@ -48,7 +48,7 @@ function display() {
           }
         })
     })
-    search.push(search.value);
+    searchHistory.push(search.value);
 
     localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
 }
